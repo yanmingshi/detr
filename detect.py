@@ -176,7 +176,8 @@ def plot_results(pil_img, prob, boxes):
 
 
 def load_img():
-    url = 'F:/results/test.jpg'
+    # url = 'F:/results/test1.jpg'
+    url = 'F:/dataSet/coco/2017/val2017/000000039769.jpg'
     img = Image.open(url)
     return img
 
@@ -194,7 +195,7 @@ def detect_img(img, args):
     bboxes_scaled = outputs['pred_boxes'].cpu()
     # keep only predictions with 0.7+ confidence
     probas = probas.softmax(-1)[0, :, :-1]
-    keep = probas.max(-1).values > 0.8
+    keep = probas.max(-1).values > 0.7
 
 
     # convert boxes from [0; 1] to image scales
